@@ -28,13 +28,15 @@ export async function checkRateLimit(
   }
 
   if (bucket.count >= limit) {
+    buckets.set(key, bucket);
     return false;
   }
 
-  await recordUsage(key, bucket.count);
-
   bucket.count += 1;
   buckets.set(key, bucket);
+
+  await recordUsage(key, bucket.count);
+
   return true;
 }
 

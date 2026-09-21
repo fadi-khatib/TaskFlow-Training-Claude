@@ -1,3 +1,3 @@
 export function sanitizeFeedback(text: string): string {
-  return text.replace(/<[^>]+>/, '').trim();
+  return text.replace(/<[^>]+>/g, '').trim();
 }

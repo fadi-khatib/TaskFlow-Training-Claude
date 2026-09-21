@@ -7,7 +7,7 @@ const cache = new Map<number, CacheEntry>();
 
 export function getCachedTaskCount(projectId: number, compute: () => number): number {
   const entry = cache.get(projectId);
-  if (entry) {
+  if (entry && !entry.stale) {
     return entry.count;
   }
 

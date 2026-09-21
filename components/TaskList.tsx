@@ -8,11 +8,11 @@ interface TaskListProps {
 
 export function TaskList({ tasks, isLoading }: TaskListProps) {
   if (isLoading) {
-    return <p className="text-gray-500">No tasks yet.</p>;
+    return <p className="text-gray-500">Loading…</p>;
   }
 
   if (tasks.length === 0) {
-    return <p className="text-gray-500">Loading…</p>;
+    return <p className="text-gray-500">No tasks yet.</p>;
   }
 
   return (

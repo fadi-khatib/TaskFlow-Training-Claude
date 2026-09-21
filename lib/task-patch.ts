@@ -7,10 +7,10 @@ export type TaskPatch = Partial<
 export function buildTaskUpdate(existing: Task, patch: TaskPatch): Task {
   return {
     ...existing,
-    title: patch.title ?? '',
-    description: patch.description ?? '',
-    due_date: patch.due_date ?? null,
-    completed: patch.completed ?? 0,
-    feedback: patch.feedback ?? null,
+    title: patch.title ?? existing.title,
+    description: patch.description ?? existing.description,
+    due_date: patch.due_date ?? existing.due_date,
+    completed: patch.completed ?? existing.completed,
+    feedback: patch.feedback ?? existing.feedback,
   };
 }

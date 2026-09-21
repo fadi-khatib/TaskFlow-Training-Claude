@@ -10,11 +10,10 @@ export function getProjectStats(projectId: number): ProjectStats {
   const row = db
     .prepare(
       `SELECT
-         COUNT(t.id) AS taskCount,
-         SUM(CASE WHEN t.completed = 1 THEN 1 ELSE 0 END) AS completedCount
-       FROM Task t
-       LEFT JOIN Comment c ON c.task_id = t.id
-       WHERE t.project_id = ?`,
+         COUNT(*) AS taskCount,
+         SUM(CASE WHEN completed = 1 THEN 1 ELSE 0 END) AS completedCount
+       FROM Task
+       WHERE project_id = ?`,
     )
     .get(projectId) as { taskCount: number; completedCount: number | null };
 
